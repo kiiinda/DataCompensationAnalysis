@@ -41,7 +41,7 @@ WHERE Level = 'Manager eg Manager of Analytics'
 
 
 
--------Check and pdate values for consistency--------
+-------Check and update values for consistency--------
 UPDATE responses
 SET industry = 'Banking'
 WHERE industry ='Bank'
@@ -165,7 +165,7 @@ where gross_salary_pm IS NULL
 
 
 
-------------Find industry salary to use to populate salary depending on levels
+------------Find industry salary to use to populate salary depending on levels--------------------
 select distinct(industry), ROUND(AVG(gross_salary_pm), 0) as average_salary
 from responses
 where level = 'Mid-level' and current_role = 'Data Analyst' and industry = 'education'
@@ -173,13 +173,6 @@ group by   industry, level
 
 
 
-SELECT
-	res1.industry, res1.current_role, res1.level,  res1.gross_salary_pm,
-	res2.industry, res2.current_role, res2.level ,  res2.gross_salary_pm
-FROM responses res1
-JOIN responses res2
-ON res1. industry = res2.industry AND res1.level = res2.level AND res1.current_role = res2.current_role
-WHERE res1.gross_salary_pm is null and res2.gross_salary_pm is not null 
 
 
 
